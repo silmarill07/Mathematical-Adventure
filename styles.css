@@ -25,7 +25,7 @@ html,body{font-family: 'Oi', 'CartoonFont', 'Baloo 2', 'Comic Sans MS', system-u
 .title{font-weight:800;font-size:clamp(1rem,4.5vw,1.4rem)}
 .meta{display:flex;gap:12px;align-items:center}
 .meta .level,.meta .coins{background:rgba(255,255,255,0.85);padding:6px 10px;border-radius:10px;font-weight:700;display:flex;align-items:center;gap:8px}
-.coin-icon{width:20px;height:20px}
+.coin-icon{width:16px;height:16px}
 .meta .lives{background:rgba(255,240,240,0.9);padding:6px 10px;border-radius:10px;font-weight:700;display:flex;align-items:center;gap:8px;color:#d62828}
 .game{max-width:720px;margin:0 auto;padding:12px;display:flex;flex-direction:column;min-height:calc(100vh - 64px)}
 .story{display:flex;gap:12px;align-items:center;padding:12px}
@@ -93,7 +93,7 @@ html,body{font-family: 'Oi', 'CartoonFont', 'Baloo 2', 'Comic Sans MS', system-u
 
 .modal{position:fixed;left:0;top:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.36));opacity:0;pointer-events:none;z-index:300}
 .modal[aria-hidden="false"]{opacity:1;pointer-events:auto}
-.modal-card{background:linear-gradient(180deg,#fffdf7,#fff7ec);padding:14px;border-radius:14px;max-width:520px;width:94%;box-shadow:0 30px 90px rgba(0,0,0,0.28);text-align:left;border:3px solid rgba(255,183,3,0.12);max-height:calc(100vh - 36px);}
+.modal-card{background:linear-gradient(180deg,#fffdf7,#fff7ec);padding:12px;border-radius:14px;max-width:520px;width:94%;box-shadow:0 30px 90px rgba(0,0,0,0.28);text-align:left;border:3px solid rgba(255,183,3,0.12);max-height:calc(100vh - 20px);} 
 .modal-card{overflow:auto}
 .modal-card h2{margin:6px 0 8px 0;font-size:1.25rem;color:#ef6c00;text-shadow:0 6px 18px rgba(239,108,0,0.06);text-align:center}
 .modal-actions{display:flex;justify-content:center;margin-top:14px;gap:10px}
@@ -205,8 +205,30 @@ input[type=checkbox]:checked{background:linear-gradient(180deg,#ffb703,#fb8500);
   .start-card{margin:8px}
 }
 
-/* hide ratings on very small devices to save space */
+/* hide ratings on very small devices to save space and tighten layout */
 @media (max-width:420px){
   .ratings-box{display:none}
   .main-actions{display:none}
+  .topbar{padding:8px 10px}
+  .title{font-size:clamp(0.9rem,5vw,1.05rem)}
+  .game{padding:6px}
+  .card{padding:8px;border-radius:14px}
+  .story{gap:8px}
+  .scene{width:72px;height:64px}
+  .hero{width:64px}
+  .story-text{padding:8px}
+  .problem{font-size:1.05rem;padding:10px}
+  .options{grid-template-columns:repeat(1,1fr);gap:8px}
+  .btn-option{padding:10px;font-size:0.95rem;min-height:48px;border-radius:12px}
+  .progress-wrap{height:12px}
+  .badge{width:40px;height:40px;border-radius:10px}
+  .collected-badges img{width:22px;height:22px}
+  .reward-toast{top:16%}
+  .intro-text{font-size:1.4rem}
+  .modal-card{padding:8px;max-height:calc(100vh - 24px)}
+  .start-card{padding:10px;max-height:calc(100vh - 24px)}
+  input[type=range]::-webkit-slider-thumb{width:16px;height:16px}
+  /* hide the label text "Життя:" but keep the hearts visible */
+  .meta .lives{font-size:0;color:transparent}
+  .meta .lives span#lives{font-size:1rem;color:#d62828;font-weight:800;display:inline-block}
 }

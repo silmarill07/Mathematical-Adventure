@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Математична пригода</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">Математична пригода</div>
+    <div class="meta">
+      <button id="btnSettings" class="icon-btn" title="Налаштування">⚙️</button>
+      <div class="level">Рівень: <span id="level">1</span></div>
+      <div class="coins">Монети: <span id="coins">0</span> <img src="assets/coin.svg" class="coin-icon" alt="coin"></div>
+      <div class="lives">Життя: <span id="lives">❤❤❤</span></div>
+    </div>
+  </header>
+
+  <main class="game">
+    <section class="story">
+      <div class="scene">
+        <img src="assets/bg.svg" alt="фон" class="bg">
+        <img src="assets/hero.svg" alt="герой" class="hero">
+      </div>
+        <div class="story-text">
+          Привіт, Алісо! Я Малюнок — твій маленький друг. Допоможи мені зібрати зірки, розв'язуючи шкільні задачі з математики. Натискай або торкай правильну відповідь!
+        </div>
+    </section>
+
+    <section class="card">
+      <div class="problem" id="problem">—</div>
+      <div class="options" id="options">
+        <!-- buttons go here -->
+      </div>
+      <div class="feedback" id="feedback"></div>
+      <div class="progress-wrap" aria-hidden>
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+      <div class="badge-area" id="badgeArea">
+        <div class="badge" id="starBadge"><img src="assets/star.svg" style="width:26px;height:26px" alt="star"></div>
+        <div id="collectedBadges" class="collected-badges" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="newBtn" class="btn">Нове завдання</button>
+      <button id="endBtn" class="btn">Завершити гру</button>
+    </section>
+    <div class="main-actions">
+      <button id="mainSettingsText" class="link-btn">Налаштування</button>
+    </div>
+    <div id="ratingsBox" class="ratings-box" aria-live="polite"></div>
+
+  </main>
+
+  <div id="confetti" class="confetti"></div>
+  <!-- Start screen -->
+  <div id="startScreen" class="start-screen" aria-hidden="false">
+    <div class="start-card">
+      <div class="game-logo">Математична пригода</div>
+      <div class="start-column">
+        <button id="startNewBtn" class="btn start-btn">Нова гра</button>
+        <button id="startRatingBtn" class="btn start-btn">Рейтинг</button>
+        <button id="startSettingsBtn" class="btn start-btn">Налаштування</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro / Level overlay (full-screen animated title) -->
+  <div id="levelOverlay" class="intro-overlay" aria-hidden="true">
+    <div class="intro-card">
+      <div id="overlayLevel" class="intro-text">Рівень 1</div>
+    </div>
+  </div>
+
+  <!-- Game over modal -->
+  <div id="gameOverModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modalClose" class="modal-close" aria-label="Закрити">✕</button>
+      <h2>Підсумки</h2>
+      <div id="gameStats"></div>
+      <div class="modal-actions">
+        <button id="modalFinish" class="btn finish-btn">Закінчити</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings modal -->
+  <div id="settingsModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="settingsClose" class="modal-close" aria-label="Закрити">✕</button>
+      <h2>Налаштування</h2>
+      <div class="modal-body">
+        <label>Звук: <input type="checkbox" id="settingSound"></label>
+        <div>Гучність: <input type="range" id="settingVolume" min="0" max="1" step="0.05"></div>
+        <!-- sound source removed; using synth only -->
+        <div class="tap-mode">Режим вводу: <strong>Tap</strong> <span class="tap-decor">👆</span></div>
+      </div>
+      <div class="modal-actions">
+        <button id="settingsSave" class="btn">Зберегти</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress / Collection modal -->
+  <div id="progressModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="progressClose" class="modal-close" aria-label="Закрити">✕</button>
+      <h2>Прогрес</h2>
+      <div id="progressBody" class="modal-body"></div>
+      <div class="modal-actions">
+        <button id="progressCloseBtn" class="btn">Закрити</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Parent panel modal (PIN protected) -->
+  <div id="parentModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="parentClose" class="modal-close" aria-label="Закрити">✕</button>
+      <h2>Батьківська панель</h2>
+      <div class="modal-body">
+        <div>Введіть PIN для доступу:</div>
+        <input id="parentPin" type="password" placeholder="PIN" style="font-size:1rem;padding:8px;margin:8px 0">
+        <div id="parentBody"></div>
+      </div>
+      <div class="modal-actions">
+        <button id="parentUnlock" class="btn">Відкрити</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
